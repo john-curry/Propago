@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="WindowsGame1.GameObject[]">
+    <Item Type="WindowsGame1.TRectangularObject">
+      <X>4</X>
+      <Y>354</Y>
+      <Width>824</Width>
+      <Height>125</Height>
+      <Name>untitled</Name>
+      <Type>Platform</Type>
+      <ColorName>AliceBlue</ColorName>
+      <TextureName>ground</TextureName>
+    </Item>
+    <Item Type="WindowsGame1.TRectangularObject">
+      <X>609</X>
+      <Y>109</Y>
+      <Width>29</Width>
+      <Height>323</Height>
+      <Name>untitled</Name>
+      <Type>Platform</Type>
+      <ColorName>AliceBlue</ColorName>
+      <TextureName>ground</TextureName>
+    </Item>
+  </Asset>
+</XnaContent>
