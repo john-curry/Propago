@@ -18,7 +18,7 @@ namespace WindowsGame1
         int yStart;
         int xEnd;
         int yEnd;
-       
+        
         
         public DrawRectangle()
         {

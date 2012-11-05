@@ -103,9 +103,18 @@ namespace WindowsGame1
                 scene = value;
             }
         }
+        public static List<string> ObjectTypes
+        {
+            get
+            {
+                return objecttypes;
+            }
+        }
+
         #endregion
 
         #region private property varables
+        private static List<string> objecttypes = new List<string>();
         private static List<GameObject> GO = new List<GameObject>();
         private static LevelEditor le;
         
@@ -155,7 +164,7 @@ namespace WindowsGame1
 
             addToolStripMenuItem.Click += new EventHandler(addToolStripMenuItem_Click);
             
-            isDown = false;
+          
 
             //populate the Color & textures dropdown boxs
             TextureBox.DataSource = TexturesByName.Keys.ToList<string>();
@@ -163,9 +172,47 @@ namespace WindowsGame1
 
             ColorBox.DataSource = ColourHelper.GetColorNames();
             ColorBox.SelectedIndex = 1;
+            
+            //TypeBox.SelectedIndex = 0;
+            objecttypes.Add("platform");
+            objecttypes.Add("player");
+            objecttypes.Add("ladder");
+            TypeBox.DataSource = objecttypes;
+            List<PictureBox> pictures = new List<PictureBox>()
+            {
+                pictureBox1,
+                pictureBox2,
+                pictureBox3,
+                pictureBox4,
+                pictureBox5,
+                pictureBox6,
+                pictureBox7,
+                pictureBox8,
+                pictureBox9
 
-            TypeBox.SelectedIndex = 0;
+            };
+            pictures.ForEach((p) =>
+            {
+                p.DoubleClick += new EventHandler(PicBoxEvents.pictureBox_DoubleClick);
+                p.BorderStyle = BorderStyle.FixedSingle;
+                p.AllowDrop = true;
+
+                p.MouseDown += new MouseEventHandler(PicBoxEvents.pictureBox_MouseDown);
+            });
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
         }
+
+
+
+
+
+
+
+
+
+
+
+        
 
         void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,6 +221,7 @@ namespace WindowsGame1
             {
                 FileStream fs =(FileStream) openFileDialog1.OpenFile();
                 LevelEditor.AddToTextures(openFileDialog1.SafeFileName, Texture2D.FromStream(graphics, fs));
+                TextureBox.DataSource = TexturesByName.Keys.ToList();
                 fs.Close();
             }
         }
@@ -202,7 +250,6 @@ namespace WindowsGame1
                 return GO;
         }
 
-
         public static void MouseEventListener()
         {
             MouseState mms = Mouse.GetState();
@@ -229,9 +276,6 @@ namespace WindowsGame1
                 sd.Invoke(mms);
         }
 
-
-
-
         public static void AddToTextures(string key, Texture2D t)
         {
             TexturesByName.Add(key, t);
@@ -247,8 +291,6 @@ namespace WindowsGame1
            
             }
         }
-
-
 
         private void DrawRectangle_Click(object sender, EventArgs e)
         {
@@ -338,6 +380,13 @@ namespace WindowsGame1
 
         }
 
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+  
+        
 
 
 

@@ -82,6 +82,8 @@ namespace WindowsGame1
 
         public void Draw(SpriteBatch sp)
         {
+
+
             LevelEditor.GetEditorObjects().ForEach(delegate(GameObject go)
             {
                 foreach (Rectangle r in CalcCorners(go))
