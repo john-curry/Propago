@@ -14,6 +14,13 @@ To Use:
 
 5. Add textures by going to Textures/Add
 	Only works to load backgrounds atm
+6. Add Types by going to Types/Add and clicking the Add button
+
+7. Change Attributes like size name color by right clicking on object and clicking on the attributes
+   dropdown buttom
+
+8. To delete right click and click delete. Make sure there is no rectangle underneith the rectangle you
+   want to delete. TODO: Fix that
 
 
 
