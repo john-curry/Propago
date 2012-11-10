@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace LevelObjects
 {
-
     public interface LevelObject { }
 
     interface IRectangular
@@ -23,6 +22,7 @@ namespace LevelObjects
         bool Intersects(int x, int y);
 
     }
+
 
     interface IIdentifiable
     {
@@ -40,7 +40,7 @@ namespace LevelObjects
         string ColorName { get; set; }
     }
 
-    public class RectangularObject : IRectangular, IIdentifiable, ITextured, IColored, LevelObject
+    public class RectangularObject : IRectangular, IIdentifiable, ITextured, IColored,  LevelObject
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -50,9 +50,13 @@ namespace LevelObjects
         public string Type { get; set; }
         public string ColorName { get; set; }
         public string TextureName { get; set; }
-
+        
         public bool Intersects(int x, int y)
         { return x > this.X && y > this.Y && y < this.Y + this.Height && x < this.Width + this.X; }
+
+        public Rectangle ToRectangle()
+        { return new Rectangle(X, Y, Width, Height); }
+
 
         public RectangularObject() { }
          

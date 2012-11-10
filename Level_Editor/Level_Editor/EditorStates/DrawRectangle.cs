@@ -10,36 +10,35 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace WindowsGame1
 {
-    class DrawRectangle : EditorState
+    class DrawRectangle
     {
 
 
-        int xStart;
-        int yStart;
-        int xEnd;
-        int yEnd;
+        static int xStart;
+        static int yStart;
+        static int xEnd;
+        static int yEnd;
         
         
-        public DrawRectangle()
+    
+
+        public static void Click(int x, int y)
         {
-        }
-
-
-
-        public void Click(MouseState ms)
-        {
+            var ms = Mouse.GetState();
             Console.WriteLine("Click");
-            xStart = ms.X;
-            yStart = ms.Y;
+            xStart = x;
+            yStart = y;
             
 
         }
 
-        public void Release(MouseState ms)
+        public static void Release(int x, int y)
         {
+            var ms = Mouse.GetState();
+
             Console.WriteLine("Release");
-            yEnd = ms.Y;
-            xEnd = ms.X;
+            yEnd = y;
+            xEnd = x;
             
             
 
@@ -58,7 +57,7 @@ namespace WindowsGame1
         }
 
 
-        public void Drag(MouseState ms)
+        public static void Drag(MouseState ms)
         {
             yEnd = ms.Y;
             xEnd = ms.X;
@@ -66,18 +65,7 @@ namespace WindowsGame1
             int width = Math.Abs(xStart - xEnd);
             int height = Math.Abs(yStart - yEnd);
 
-            if (xEnd >= xStart && yEnd >= yStart) ;
-            // LevelEditor.tempObject = new EditorBlock(xStart, yStart, width, height);
-            else if (xStart >= xEnd && yStart >= yEnd) ;
-            //LevelEditor.tempObject = new EditorBlock(xEnd, yEnd, width, height);
-            else if (xEnd >= xStart && yEnd <= yStart) ;
-            //LevelEditor.tempObject = new EditorBlock(xStart, yEnd, width, height);
-            else if (xEnd <= xStart && yEnd >= yStart) ;
-                //LevelEditor.tempObject = new EditorBlock(xEnd, yStart, width, height);
+     
         }
-
-        public void Draw(SpriteBatch sp) { }
-        public void Save() { }
-
     }
 }

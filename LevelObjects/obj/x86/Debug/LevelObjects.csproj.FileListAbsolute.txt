@@ -5,7 +5,7 @@ C:\Users\Takeshi-Kovacs\Documents\Visual Studio 2010\Projects\Level_Editor\Level
 C:\Users\Takeshi-Kovacs\Documents\Visual Studio 2010\Projects\Level_Editor\LevelObjects\obj\x86\Debug\LevelObjects.pdb
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\bin\x86\Debug\LevelObjects.dll
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\bin\x86\Debug\LevelObjects.pdb
-C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\obj\x86\Debug\LevelObjects.csprojResolveAssemblyReference.cache
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\obj\x86\Debug\LevelObjects.dll
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\obj\x86\Debug\LevelObjects.pdb
+C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\LevelObjects\obj\x86\Debug\LevelObjects.csprojResolveAssemblyReference.cache

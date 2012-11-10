@@ -19,3 +19,5 @@ C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\bin\x
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\obj\x86\Debug\Level_Editor.pdb
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\obj\x86\Debug\WindowsGame1.csprojResolveAssemblyReference.cache
 C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\obj\x86\Debug\WindowsGame1.NameForm.resources
+C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\obj\x86\Debug\WindowsGame1.Attributes.resources
+C:\Users\Takeshi-Kovacs\Documents\GitHub\Propago\Level_Editor\Level_Editor\obj\x86\Debug\WindowsGame1.TypeForm.resources

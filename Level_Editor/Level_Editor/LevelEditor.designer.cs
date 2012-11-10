@@ -32,16 +32,14 @@
             this.ColorBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TypeBox = new System.Windows.Forms.ComboBox();
+            this.typeBox = new System.Windows.Forms.ComboBox();
             this.TextureBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Edit = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,10 +48,7 @@
             this.pNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -78,11 +73,11 @@
             // 
             // DrawRectangle
             // 
-            this.DrawRectangle.Location = new System.Drawing.Point(210, 47);
+            this.DrawRectangle.Location = new System.Drawing.Point(204, 30);
             this.DrawRectangle.Name = "DrawRectangle";
-            this.DrawRectangle.Size = new System.Drawing.Size(67, 57);
+            this.DrawRectangle.Size = new System.Drawing.Size(50, 41);
             this.DrawRectangle.TabIndex = 0;
-            this.DrawRectangle.Text = "Rectangle";
+            this.DrawRectangle.Text = "Draw";
             this.DrawRectangle.UseVisualStyleBackColor = true;
             this.DrawRectangle.Click += new System.EventHandler(this.DrawRectangle_Click);
             // 
@@ -100,7 +95,6 @@
             this.ColorBox.Name = "ColorBox";
             this.ColorBox.Size = new System.Drawing.Size(131, 21);
             this.ColorBox.TabIndex = 6;
-            this.ColorBox.SelectedIndexChanged += new System.EventHandler(this.ColorBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -120,15 +114,14 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Type";
             // 
-            // TypeBox
+            // typeBox
             // 
-            this.TypeBox.FormattingEnabled = true;
-            this.TypeBox.IntegralHeight = false;
-            this.TypeBox.Location = new System.Drawing.Point(61, 66);
-            this.TypeBox.Name = "TypeBox";
-            this.TypeBox.Size = new System.Drawing.Size(130, 21);
-            this.TypeBox.TabIndex = 9;
-            this.TypeBox.SelectedIndexChanged += new System.EventHandler(this.TypeBox_SelectedIndexChanged);
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.IntegralHeight = false;
+            this.typeBox.Location = new System.Drawing.Point(61, 66);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(130, 21);
+            this.typeBox.TabIndex = 9;
             // 
             // TextureBox
             // 
@@ -149,15 +142,15 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Texture";
             // 
-            // Edit
+            // EditButton
             // 
-            this.Edit.Location = new System.Drawing.Point(283, 47);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(67, 57);
-            this.Edit.TabIndex = 12;
-            this.Edit.Text = "Edit";
-            this.Edit.UseVisualStyleBackColor = true;
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            this.EditButton.Location = new System.Drawing.Point(260, 30);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(50, 41);
+            this.EditButton.TabIndex = 12;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.Edit_Click);
             // 
             // menuStrip1
             // 
@@ -165,49 +158,33 @@
             this.fIleToolStripMenuItem,
             this.toolStripMenuItem1,
             this.textureToolStripMenuItem,
-            this.typeToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.typeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(379, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(370, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fIleToolStripMenuItem
             // 
             this.fIleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.saveToolStripMenuItem});
+            this.toolStripSeparator1});
             this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
             this.fIleToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fIleToolStripMenuItem.Text = "File";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-            this.saveToolStripMenuItem.Text = "Save As";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -265,38 +242,16 @@
             // typeToolStripMenuItem
             // 
             this.typeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem1});
+            this.addTypeToolStripMenuItem1});
             this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
             this.typeToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.typeToolStripMenuItem.Text = "Type";
             // 
-            // addToolStripMenuItem1
+            // addTypeToolStripMenuItem1
             // 
-            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
-            this.addToolStripMenuItem1.Text = "Add";
-            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.preferencesToolStripMenuItem,
-            this.undoToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // preferencesToolStripMenuItem
-            // 
-            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.preferencesToolStripMenuItem.Text = "Preferences";
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.undoToolStripMenuItem.Text = "Undo";
+            this.addTypeToolStripMenuItem1.Name = "addTypeToolStripMenuItem1";
+            this.addTypeToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
+            this.addTypeToolStripMenuItem1.Text = "Add";
             // 
             // openFileDialog1
             // 
@@ -304,7 +259,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(16, 130);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 120);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(111, 90);
             this.pictureBox1.TabIndex = 14;
@@ -312,7 +267,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(133, 226);
+            this.pictureBox2.Location = new System.Drawing.Point(131, 216);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(111, 90);
             this.pictureBox2.TabIndex = 15;
@@ -320,7 +275,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(14, 322);
+            this.pictureBox3.Location = new System.Drawing.Point(12, 312);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(111, 90);
             this.pictureBox3.TabIndex = 16;
@@ -328,7 +283,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(250, 226);
+            this.pictureBox4.Location = new System.Drawing.Point(248, 216);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(111, 90);
             this.pictureBox4.TabIndex = 17;
@@ -336,7 +291,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(250, 130);
+            this.pictureBox5.Location = new System.Drawing.Point(248, 120);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(111, 90);
             this.pictureBox5.TabIndex = 18;
@@ -344,7 +299,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(133, 130);
+            this.pictureBox6.Location = new System.Drawing.Point(131, 120);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(111, 90);
             this.pictureBox6.TabIndex = 19;
@@ -352,7 +307,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(16, 226);
+            this.pictureBox7.Location = new System.Drawing.Point(14, 216);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(111, 90);
             this.pictureBox7.TabIndex = 20;
@@ -360,7 +315,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Location = new System.Drawing.Point(133, 322);
+            this.pictureBox8.Location = new System.Drawing.Point(131, 312);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(111, 90);
             this.pictureBox8.TabIndex = 21;
@@ -368,7 +323,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(250, 322);
+            this.pictureBox9.Location = new System.Drawing.Point(248, 312);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(111, 90);
             this.pictureBox9.TabIndex = 22;
@@ -378,7 +333,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 428);
+            this.ClientSize = new System.Drawing.Size(370, 413);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);
@@ -388,10 +343,10 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Edit);
+            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TextureBox);
-            this.Controls.Add(this.TypeBox);
+            this.Controls.Add(this.typeBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ColorBox);
@@ -423,10 +378,10 @@
         private System.Windows.Forms.ComboBox ColorBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox TypeBox;
+        private System.Windows.Forms.ComboBox typeBox;
         private System.Windows.Forms.ComboBox TextureBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Edit;
+        private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fIleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -434,18 +389,13 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem typeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addTypeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pNGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backgroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;

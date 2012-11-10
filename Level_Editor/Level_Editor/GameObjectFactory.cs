@@ -13,12 +13,27 @@ namespace WindowsGame1
 {
     class GameObjectFactory
     {
-
+        
         public static GameObject MakeObject(int X, int Y, int W, int H)
         {
 
             try
             {
+                if (W < 5 || H < 5)
+                {
+                    var t = LevelEditor.GetTextureByName(LevelEditor.Texturing);
+                    //return new TRectangularObject(
+                    //    X,
+                    //    Y,
+                    //    t.Bounds.Width,
+                    //    t.Bounds.Height,
+                    //    "untitled",
+                    //    LevelEditor.Type,
+                    //    LevelEditor.Coloring,
+                    //    LevelEditor.Texturing
+                    //    );
+                }
+
                 if (W <= 5 || H <= 5 || X < 0 || Y < 0)
                     throw new Exception("Bad Click event. You should fix this stupid");
                 if (X == 0 && Y == 0)

@@ -45,6 +45,22 @@ namespace WindowsGame1
         {
             List<LevelObjects.RectangularObject> ro = new List<RectangularObject>();
 
+            for (int i = 0; i < levelObjects.Count; i++)
+            {
+                for (int j = 0; j < levelObjects.Count; j++)
+                {
+                    if ((levelObjects[i] as TRectangularObject).Y < (levelObjects[j] as TRectangularObject).Y)
+                    {
+                        var temp = levelObjects[j];
+                        levelObjects[j] = levelObjects[i];
+                        levelObjects[i] = temp;
+                    }
+                }
+
+
+            }
+
+
             foreach (GameObject g in levelObjects)
             {
                 if (g is TRectangularObject)
@@ -71,4 +87,5 @@ namespace WindowsGame1
             }
         }
     }
+    
 }

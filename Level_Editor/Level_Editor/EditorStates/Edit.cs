@@ -25,7 +25,7 @@ namespace WindowsGame1
     delegate void Release(MouseState ms, List<GameObject> gameobjects);
     delegate void Drag(MouseState ms, List<GameObject> gameobjects);
     delegate bool IsState(MouseState ms, List<GameObject> gameobjects);
-    class Edit : EditorState
+    public class Edit
     {
         Dictionary<EditState, Click> Clicks = new Dictionary<EditState, Click>();
         Dictionary<EditState, Drag> Drags = new Dictionary<EditState, Drag>();
@@ -33,7 +33,7 @@ namespace WindowsGame1
         Dictionary<EditState, IsState> Checks = new Dictionary<EditState, IsState>();
         EditState cState = EditState.Default;
         
-        public Edit(MouseState ms)
+        public Edit()
         {
             Clicks.Add(EditState.Move, Move.Click);
             Drags.Add(EditState.Move, Move.Drag);
@@ -97,7 +97,6 @@ namespace WindowsGame1
 
         }
 
-        public void Save() { }
         public static Rectangle[] CalcCorners(GameObject gameobject)
         {
             Rectangle[] recs = new Rectangle[4];

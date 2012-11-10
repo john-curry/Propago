@@ -49,7 +49,7 @@ namespace WindowsGame1
 
         public static void Release(MouseState ms, List<GameObject> gameobjects)
         {
-
+            Console.WriteLine("MoveRelease");
 
         }
 

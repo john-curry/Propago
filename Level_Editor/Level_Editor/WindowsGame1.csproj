@@ -113,31 +113,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundForm.cs">
+    <Compile Include="Forms\TypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BackgroundForm.Designer.cs">
+    <Compile Include="Forms\TypeForm.Designer.cs">
+      <DependentUpon>TypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BackgroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BackgroundForm.Designer.cs">
       <DependentUpon>BackgroundForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class4.cs" />
     <Compile Include="EditorStates\EditStates\Corners.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="EditorStates\EditStates\Default.cs" />
     <Compile Include="EditorStates\Edit.cs" />
     <Compile Include="ColourHelper.cs" />
     <Compile Include="EditorStates\DrawRectangle.cs" />
-    <Compile Include="EditorStates\EditorState.cs" />
-    <Compile Include="NameForm.cs">
+    <Compile Include="Forms\Attributes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NameForm.Designer.cs">
+    <Compile Include="Forms\Attributes.Designer.cs">
+      <DependentUpon>Attributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NameForm.Designer.cs">
       <DependentUpon>NameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PicBoxEvents.cs" />
-    <Compile Include="Preferences.cs">
+    <Compile Include="Forms\Preferences.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Preferences.Designer.cs">
+    <Compile Include="Forms\Preferences.Designer.cs">
       <DependentUpon>Preferences.cs</DependentUpon>
     </Compile>
     <Compile Include="GameObject.cs">
@@ -152,10 +162,10 @@
       <DependentUpon>LevelEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="EditorStates\EditStates\Move.cs" />
-    <Compile Include="MyConsole.cs">
+    <Compile Include="Forms\MyConsole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyConsole.designer.cs">
+    <Compile Include="Forms\MyConsole.designer.cs">
       <DependentUpon>MyConsole.cs</DependentUpon>
     </Compile>
     <Compile Include="NotAGame.cs" />
@@ -206,19 +216,25 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BackgroundForm.resx">
+    <EmbeddedResource Include="Forms\TypeForm.resx">
+      <DependentUpon>TypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BackgroundForm.resx">
       <DependentUpon>BackgroundForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NameForm.resx">
+    <EmbeddedResource Include="Forms\Attributes.resx">
+      <DependentUpon>Attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NameForm.resx">
       <DependentUpon>NameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Preferences.resx">
+    <EmbeddedResource Include="Forms\Preferences.resx">
       <DependentUpon>Preferences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LevelEditor.resx">
       <DependentUpon>LevelEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyConsole.resx">
+    <EmbeddedResource Include="Forms\MyConsole.resx">
       <DependentUpon>MyConsole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

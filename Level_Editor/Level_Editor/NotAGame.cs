@@ -20,12 +20,9 @@ namespace WindowsGame1
         Texture2D white;
         Texture2D mpointer;
         Texture2D background;
-        Texture2D death;
         Texture2D ladder;
         Texture2D smith;
         Texture2D ground;
-
-        Texture2D finaltexture;
         RenderTarget2D rendertarget;
 
 
@@ -40,7 +37,6 @@ namespace WindowsGame1
           
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
         }
@@ -53,9 +49,20 @@ namespace WindowsGame1
             LevelEditor.Initialize(Window.ClientBounds, graphics.GraphicsDevice);
             rendertarget = new RenderTarget2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             Form gameForm = (Form)Form.FromHandle(Window.Handle);
-            gameForm.AllowDrop = true;
-            gameForm.DragEnter += new DragEventHandler(PicBoxEvents. gameForm_DragEnter);
-            gameForm.DragDrop += new DragEventHandler(PicBoxEvents. gameForm_DragDrop);
+          
+            gameForm.MouseDown += (sender, e) =>
+                {
+                    if (LevelEditor.State == EditorState.Draw)
+                        DrawRectangle.Click(e.X, e.Y);
+                };
+
+            
+            gameForm.MouseUp += (sender, e) =>
+                {
+                    if (LevelEditor.State == EditorState.Draw)
+                        DrawRectangle.Release(e.X, e.Y);
+                };
+
             gameForm.DoubleClick += new EventHandler(PicBoxEvents. gameForm_DoubleClick);
             gameForm.MouseClick += new MouseEventHandler(gameForm_MouseClick);
 
@@ -65,51 +72,28 @@ namespace WindowsGame1
         {
             if (e.Button == MouseButtons.Right)
             {
-                var name = new MenuItem("Name");
+                var attr = new MenuItem("Attributes");
                 var delete = new MenuItem("Delete");
+                var behaviour = new MenuItem("Define Behaviour");
+
+                var go = LevelEditor.GetEditorObjects().Find(
+                    g => (g as TRectangularObject).Intersects(e.X, e.Y));
+                
                 ContextMenu m = new ContextMenu();
-                m.MenuItems.Add(name);
+             
                 m.MenuItems.Add(delete);
+                m.MenuItems.Add(attr);
                 m.Show((Control)Control.FromHandle(Window.Handle), new System.Drawing.Point( e.X, e.Y));
-                name.Click += new EventHandler(name_Click);
-                delete.Click += new EventHandler(delete_Click);
 
+                delete.Click += delegate(object d, EventArgs de)
+                { LevelEditor.GetEditorObjects().Remove(go); };
+
+                attr.Click += delegate(object asender, EventArgs ae)
+                { new Attributes(go).ShowDialog(); };
+                
 
             }
         }
-
-        void delete_Click(object sender, EventArgs e)
-        {
-            LevelEditor.GetEditorObjects().ForEach((p) =>
-                {
-                    if ((p as TRectangularObject).Intersects(Mouse.GetState().X, Mouse.GetState().Y))
-                        LevelEditor.GetEditorObjects().Remove(p);
-                });
-        }
-
-        void name_Click(object sender, EventArgs e)
-        {
-            foreach (GameObject g in LevelEditor.GetEditorObjects())
-            {
-                MouseState ms = Mouse.GetState();
-                if ((g as TRectangularObject).Intersects(ms.X, ms.Y))
-                {
-                    var n = new NameForm(g);
-                    n.Show();
-                    n.Activate();
-                }
-            }
-        }
-
-      
-
-
-
-
-
-
-
-
 
     
         protected override void LoadContent()
@@ -132,7 +116,7 @@ namespace WindowsGame1
      
         protected override void UnloadContent()  {}
 
-      
+        
         protected override void Update(GameTime gameTime)
         {
            
@@ -140,8 +124,9 @@ namespace WindowsGame1
                 || Keyboard.GetState().IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
                 this.Exit();
 
-                LevelEditor.MouseEventListener();
+             if (LevelEditor.State == EditorState.Edit) LevelEditor.MouseEventListener();
 
+           
        
             GOList = LevelEditor.GetEditorObjects();
 
@@ -174,7 +159,7 @@ namespace WindowsGame1
                 });
       
 
-            LevelEditor.State.Draw(spriteBatch);
+            
             if (LevelEditor.Test != null)
             {
                 spriteBatch.Draw(LevelEditor.Test, LevelEditor.Test.Bounds, Color.White);
@@ -186,10 +171,13 @@ namespace WindowsGame1
 
             LevelEditor.Scene = (Texture2D)rendertarget;
             
+
             spriteBatch.Draw(rendertarget,
                 new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight),
                 Color.White);
 
+            if (LevelEditor.State == EditorState.Edit)
+                LevelEditor.EditState.Draw(spriteBatch);
             spriteBatch.End();
 
 

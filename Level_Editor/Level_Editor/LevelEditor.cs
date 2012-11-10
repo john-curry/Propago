@@ -13,18 +13,23 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System.Threading;
 namespace WindowsGame1
 {
+    public enum EditorState
+    {
+        Draw, Edit
+    }
+
     public partial class LevelEditor : Form
     {
         #region editorvariables
         EditorState editorState;
         public EditorState CurrentState { get { return editorState; } }
-        
+        public ComboBox TypeBox { get { return typeBox; } } 
         GraphicsDevice graphics;
         Microsoft.Xna.Framework.Rectangle bounds;
-
+        public Edit edit;
         string directory;
         string name;
 
@@ -43,11 +48,19 @@ namespace WindowsGame1
                 background = value;
             }
         }
+        public static Edit EditState
+        {
+            get
+            {
+                return le.edit;
+            }
+        }
+
         public static string Type
         {
             get
             {
-                return le.TypeBox.Text;
+                return le.typeBox.Text;
             }
         }
         public static string Coloring
@@ -152,20 +165,20 @@ namespace WindowsGame1
             this.bounds = bounds;
 
             GO = new List<GameObject>();
-            editorState = new DrawRectangle();
+            editorState = EditorState.Draw;
             
             openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Multiselect = false;
             openFileDialog1.Filter = "png Files (.png)|*.png|All Files (*.*)|*.*";
-            
-            sc = new state_Click(editorState.Click);
-            sr = new state_Release(editorState.Release);
-            sd = new state_Dragging(editorState.Drag);
+
+            edit = new Edit();
 
             addToolStripMenuItem.Click += new EventHandler(addToolStripMenuItem_Click);
-            
-          
 
+            addTypeToolStripMenuItem1.Click += (sender, e) => 
+            { (new TypeForm()).ShowDialog(); };
+
+            
             //populate the Color & textures dropdown boxs
             TextureBox.DataSource = TexturesByName.Keys.ToList<string>();
             TextureBox.SelectedIndex = 3;
@@ -177,7 +190,8 @@ namespace WindowsGame1
             objecttypes.Add("platform");
             objecttypes.Add("player");
             objecttypes.Add("ladder");
-            TypeBox.DataSource = objecttypes;
+            typeBox.DataSource = objecttypes;
+
             List<PictureBox> pictures = new List<PictureBox>()
             {
                 pictureBox1,
@@ -191,6 +205,7 @@ namespace WindowsGame1
                 pictureBox9
 
             };
+
             pictures.ForEach((p) =>
             {
                 p.DoubleClick += new EventHandler(PicBoxEvents.pictureBox_DoubleClick);
@@ -199,20 +214,7 @@ namespace WindowsGame1
 
                 p.MouseDown += new MouseEventHandler(PicBoxEvents.pictureBox_MouseDown);
             });
-            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
         }
-
-
-
-
-
-
-
-
-
-
-
-        
 
         void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -250,31 +252,7 @@ namespace WindowsGame1
                 return GO;
         }
 
-        public static void MouseEventListener()
-        {
-            MouseState mms = Mouse.GetState();
 
-            if (mms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-            {
-                if (!isDown)
-                {
-                    isDown = true;
-                    sc.Invoke(mms);
-                }
-            }
-
-            if (mms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
-            {
-                if (isDown)
-                {
-                    isDown = false;
-                    sr.Invoke(mms);
-                }
-            }
-
-            if (isDown)
-                sd.Invoke(mms);
-        }
 
         public static void AddToTextures(string key, Texture2D t)
         {
@@ -294,41 +272,14 @@ namespace WindowsGame1
 
         private void DrawRectangle_Click(object sender, EventArgs e)
         {
-            var next = new DrawRectangle();
-            sc -= editorState.Click;
-            sd -= editorState.Drag;
-            sr -= editorState.Release;
-
-            sc += next.Click;
-            sr += next.Release;
-            sd += next.Drag;
-
-            editorState = next;
+            editorState = EditorState.Draw;
         }
 
         private void Edit_Click(object sender, EventArgs e)
         {
-            var next = new Edit(Mouse.GetState());
-            sc -= editorState.Click;
-            sd -= editorState.Drag;
-            sr -= editorState.Release;
-
-            sc += next.Click;
-            sr += next.Release;
-            sd += next.Drag;
-
-            editorState = next;
-
+            editorState = EditorState.Edit;
         }
-
-        private void ColorBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void TypeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+    
         private void LevelEditor_Load(object sender, EventArgs e) { }
 
         private void pNGToolStripMenuItem_Click(object sender, EventArgs e)
@@ -375,15 +326,34 @@ namespace WindowsGame1
             
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        public static void MouseEventListener()
         {
+            MouseState mms = Mouse.GetState();
 
+            if (mms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+            {
+                if (!isDown)
+                {
+                    isDown = true;
+                    EditState.Click(mms);
+                }
+            }
+
+            if (mms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
+            {
+                if (isDown)
+                {
+                    isDown = false;
+                    EditState.Click(mms);
+                }
+            }
+
+            if (isDown)
+                EditState.Drag(mms);
         }
 
-        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
+   
+      
 
   
         

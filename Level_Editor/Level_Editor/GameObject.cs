@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 namespace WindowsGame1
 {
 
@@ -22,6 +27,11 @@ namespace WindowsGame1
     {
         string Name { get; set; }
         string Type { get; set; }
+    }
+
+    interface IBehaviourable
+    {
+        List<Action> Behave { get; set; }
     }
 
     interface ITextured
@@ -44,11 +54,11 @@ namespace WindowsGame1
         public string Type { get; set; }
         public string ColorName { get; set; }
         public string TextureName { get; set; }
-
         public bool Intersects(int x, int y)
         { return x > this.X && y > this.Y && y < this.Y + this.Height && x < this.Width + this.X; }
 
-        
+ 
+
         public TRectangularObject(int x, int y, int w, int h)
         {
             this.X = x;
